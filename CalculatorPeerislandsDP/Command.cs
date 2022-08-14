@@ -10,7 +10,7 @@ namespace CalculatorDP
     /// </summary>
     public abstract class Command
     {
-        public abstract void Execute();
-        public abstract void UnExecute();
+        public abstract void Execute(string equation);
+        //public abstract void UnExecute();
     }
 }

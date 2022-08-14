@@ -1,4 +1,5 @@
 ﻿using System;
+using static CalculatorDP.CalculatorCommand;
 
 namespace CalculatorDP
 {
@@ -11,16 +12,39 @@ namespace CalculatorDP
             Console.WriteLine("My Calculator using Dessign Patters!");
             User user = new User();
             // User presses calculator buttons
-            user.Compute('+', 100);
-            user.Compute('-', 50);
-            user.Compute('*', 10);
-            user.Compute('/', 2);
-            // Undo 4 commands
-            user.Undo(4);
-            // Redo 3 commands
-            user.Redo(3);
-            // Wait for user
-            Console.ReadKey();
+            string eq;
+            Console.Write("Enter equation:  ");
+            eq = Console.ReadLine();
+            user.Compute(eq);
+
         }
     }
+    class EvalNode
+    {
+        public virtual decimal Evaluate()
+        {
+            return decimal.Zero;
+        }
+    }
+
+    class ValueNode : EvalNode
+    {
+        decimal value;
+
+        public ValueNode(decimal v)
+        {
+            value = v;
+        }
+
+        public override decimal Evaluate()
+        {
+            return value;
+        }
+
+        public override string ToString()
+        {
+            return value.ToString();
+        }
+    }
+
 }
